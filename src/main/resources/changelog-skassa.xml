@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet author="zloy" id="050520181900">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <comment>
+            add table users
+        </comment>
+        <createTable tableName="users">
+            <column name="id" type="bigserial" >
+                <constraints primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="login" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="key" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="text"/>
+            <column name="email" type="text"/>
+            <column name="phone" type="text"/>
+            <column name="dob" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+            <column name="deleted" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="zloy" id="060520181600">
+        <comment>
+            create function get_all_user
+        </comment>
+        <createProcedure>
+            create or replace FUNCTION get_all_user() returns refcursor
+            AS $$
+            declare
+            ref refcursor;
+            BEGIN
+
+                open ref FOR select * from users;
+                return ref;
+
+            END; $$
+            LANGUAGE plpgsql;
+        </createProcedure>
+    </changeSet>
+
+
+</databaseChangeLog>
