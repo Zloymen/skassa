@@ -1,0 +1,31 @@
+==== Links
+= Getting Started With KASSA REST service
+
+This is an example output for a service running at http://localhost:8080:
+
+get all user
+
+.request
+include::{snippets}/get_user/http-request.adoc[]
+.response
+include::{snippets}/get_user/http-response.adoc[]
+.curl
+include::{snippets}/get_user/curl-request.adoc[]
+
+Create user
+
+.request
+include::{snippets}/create_user/http-request.adoc[]
+.response
+include::{snippets}/create_user/http-response.adoc[]
+.curl
+include::{snippets}/create_user/curl-request.adoc[]
+
+Test error
+
+.request
+include::{snippets}/error/http-request.adoc[]
+.response
+include::{snippets}/error/http-response.adoc[]
+.curl
+include::{snippets}/error/curl-request.adoc[]

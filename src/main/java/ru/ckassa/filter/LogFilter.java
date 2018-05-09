@@ -23,6 +23,13 @@ public class LogFilter extends GenericFilterBean {
 
             log.debug("type content:" + httpRequest.getHeader("Accept"));
 
+            httpRequest.getParameterMap().forEach((key, value) ->{
+                log.debug( key + " : " + httpRequest.getParameter(key));
+
+            });
+
+
+
             chain.doFilter(request, response);
 
         }finally {

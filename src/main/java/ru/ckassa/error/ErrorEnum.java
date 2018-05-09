@@ -4,6 +4,7 @@ import lombok.Getter;
 
 public enum ErrorEnum {
     TEST("test"),
+    DATA_NOT_FOUND("Data not found")
     ;
 
     @Getter

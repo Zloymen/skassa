@@ -23,14 +23,34 @@ import java.util.UUID;
         @NamedStoredProcedureQuery(
                 name = "insertUser",
                 procedureName = "insert_user",
-                resultClasses = { UUID.class },
                 parameters = {
-                        @StoredProcedureParameter(mode = ParameterMode.OUT, type = void.class),
-                        @StoredProcedureParameter(mode = ParameterMode.IN, type = void.class),
-                        @StoredProcedureParameter(mode = ParameterMode.IN, type = void.class),
-                        @StoredProcedureParameter(mode = ParameterMode.IN, type = void.class),
-                        @StoredProcedureParameter(mode = ParameterMode.IN, type = void.class),
-                        @StoredProcedureParameter(mode = ParameterMode.IN, type = void.class)
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = UUID.class)
+                }),
+        @NamedStoredProcedureQuery(
+                name = "updateUser",
+                procedureName = "update_user",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, type = Integer.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = LocalDate.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class)
+                }),
+
+        @NamedStoredProcedureQuery(
+                name = "deleteUser",
+                procedureName = "delete_user",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, type = Integer.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, type = Long.class),
                 })
 })
 @Data

@@ -29,7 +29,7 @@ public class App {
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new LogFilter());
-        registration.addUrlPatterns("/service/*");
+        registration.addUrlPatterns("/user/*");
         registration.addInitParameter("paramName", "paramValue");
         registration.setName("LogFilter");
         registration.setOrder(1);

@@ -53,5 +53,24 @@
         </createProcedure>
     </changeSet>
 
+    <changeSet author="zloy" id="090520181800">
+        <comment>
+            create function get_all_user
+        </comment>
+        <createProcedure>
+            create or replace FUNCTION insert_user(pLogin in text, pName in text, pDob in date, pEmail in text, pPhone in text, pKey in UUID) returns BIGINT
+            AS $$
+            declare
+            returnId BIGINT;
+            BEGIN
+
+            insert into users(login, name,dob, email, phone, created, key)values (pLogin,Pname, pDob, pEmail, pPhone,current_timestamp, pKey) returning id into returnId;
+            return returnId;
+
+            END; $$
+            LANGUAGE plpgsql;
+        </createProcedure>
+    </changeSet>
+
 
 </databaseChangeLog>
