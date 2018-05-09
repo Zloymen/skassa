@@ -72,5 +72,57 @@
         </createProcedure>
     </changeSet>
 
+    <changeSet author="zloy" id="090520182100">
+        <comment>
+            create function update_user
+        </comment>
+        <createProcedure>
+            create or replace FUNCTION update_user(pId IN bigint ,pLogin in text, pName in text, pDob in date, pEmail in text, pPhone in text) returns integer
+                AS $$
+                BEGIN
+
+                UPDATE users SET login = pLogin, name = Pname, dob = pDob, email = pEmail, phone = pPhone WHERE ID = pId;
+                --костыли
+                return 1;
+                END; $$
+            LANGUAGE plpgsql;
+        </createProcedure>
+    </changeSet>
+
+    <changeSet author="zloy" id="090520182110">
+        <comment>
+            create function get_all_user
+        </comment>
+        <createProcedure>
+            create or replace FUNCTION delete_user(pId IN bigint) returns integer
+                AS $$
+                BEGIN
+
+                UPDATE users SET deleted=current_timestamp WHERE ID = pId;
+                --костыли
+                return 1;
+
+                END; $$
+            LANGUAGE plpgsql;
+        </createProcedure>
+    </changeSet>
+
+    <changeSet author="zloy" id="090520182110">
+        <preConditions>
+            <tableIsEmpty tableName="users"/>
+        </preConditions>
+        <comment>
+            add test data
+        </comment>
+        <sql>
+            insert into users(login, name, email, phone, created, key, dob)values
+                ('test1@test.com', '12341','test1@test.com','12341',current_timestamp, 'd9923aa8-1595-475e-b5df-07fb9e951d90', current_date),
+                ('test2@test.com', '12342','test2@test.com','12342',current_timestamp, '4fac777d-6106-45d1-8b06-16f7cada9a26', current_date),
+                ('test3@test.com', '12343','test3@test.com','12343',current_timestamp, 'd9923aa8-1595-475e-b5df-07fb9e951d92', current_date),
+                ('test4@test.com', '12344','test4@test.com','12344',current_timestamp, 'd9923aa8-1595-475e-b5df-07fb9e951d93', current_date),
+                ('test5@test.com', '12345','test5@test.com','12345',current_timestamp, 'd9923aa8-1595-475e-b5df-07fb9e951d94', current_date);
+        </sql>
+    </changeSet>
+
 
 </databaseChangeLog>
