@@ -1,7 +1,6 @@
 package ru.ckassa.dao;
 
 import ru.ckassa.dto.CreateUserDto;
-import ru.ckassa.dto.DeleteUserDto;
 import ru.ckassa.dto.UpdateUserDto;
 import ru.ckassa.entity.User;
 

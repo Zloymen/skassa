@@ -15,10 +15,12 @@ import java.util.UUID;
 @Slf4j
 public class LogFilter extends GenericFilterBean {
 
+    private final String LOG_ID;
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         try {
-            MDC.put("request_id", UUID.randomUUID().toString());
+            MDC.put(LOG_ID, UUID.randomUUID().toString());
             HttpServletRequest httpRequest = (HttpServletRequest) request;
 
             log.debug("type content:" + httpRequest.getHeader("Accept"));
@@ -35,5 +37,10 @@ public class LogFilter extends GenericFilterBean {
         }finally {
             MDC.clear();
         }
+    }
+
+    public LogFilter(String logId) {
+        super();
+        this.LOG_ID = logId;
     }
 }

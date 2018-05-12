@@ -7,21 +7,18 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.ckassa.dto.CreateUserDto;
-import ru.ckassa.dto.DeleteUserDto;
 import ru.ckassa.dto.UpdateUserDto;
 import ru.ckassa.entity.User;
 import ru.ckassa.error.TestTaskError;
 import ru.ckassa.service.UserService;
 
-import java.time.LocalDate;
+import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 
 import static ru.ckassa.error.ErrorEnum.TEST;
 
 @RestController
 @RequestMapping(value = "/user")
-@Validated
 @Slf4j
 public class ApiUser {
 
@@ -38,7 +35,7 @@ public class ApiUser {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = {MediaType.ALL_VALUE},
             produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public Long createUser(@RequestParam CreateUserDto dto) {
+    public Long createUser(@RequestBody @Valid CreateUserDto dto) {
 
         return userService.save(dto);
     }
@@ -46,7 +43,7 @@ public class ApiUser {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/", method = RequestMethod.PUT, consumes = {MediaType.ALL_VALUE},
             produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public void updateUser(@RequestParam UpdateUserDto dto) {
+    public void updateUser(@RequestBody @Valid UpdateUserDto dto) {
 
         userService.update(dto);
     }

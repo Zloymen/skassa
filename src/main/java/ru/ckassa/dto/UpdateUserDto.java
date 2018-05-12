@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Data
@@ -17,14 +15,14 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UpdateUserDto {
 
-    @NotEmpty
+    @NotNull
     private Long id;
     @NotEmpty
-    @Min(8) @Max(124)
+    @Size(min=8, max = 124)
     private String login;
     @NotEmpty
     private String name;
-    @NotEmpty
+    @NotNull
     private LocalDate dob;
     @NotEmpty @Email
     private String email;

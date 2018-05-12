@@ -107,8 +107,8 @@
         </createProcedure>
     </changeSet>
 
-    <changeSet author="zloy" id="090520182110">
-        <preConditions>
+    <changeSet author="zloy" id="090520182120">
+        <preConditions onFail="MARK_RAN">
             <tableIsEmpty tableName="users"/>
         </preConditions>
         <comment>

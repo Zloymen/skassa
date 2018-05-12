@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ckassa.dao.UserDao;
 import ru.ckassa.dto.CreateUserDto;
-import ru.ckassa.dto.DeleteUserDto;
 import ru.ckassa.dto.UpdateUserDto;
 import ru.ckassa.entity.User;
 import ru.ckassa.error.ErrorEnum;
