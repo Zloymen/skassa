@@ -1,0 +1,10 @@
+version: '2'
+services:
+    skassa-postgresql:
+        image: postgres:9.6.5
+        environment:
+            - POSTGRES_USER=skassa
+            - POSTGRES_PASSWORD=skassa
+            - POSTGRES_DB=skassa
+        ports:
+            - 5431:5432

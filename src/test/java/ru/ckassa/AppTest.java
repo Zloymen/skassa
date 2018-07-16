@@ -77,7 +77,7 @@ public class AppTest {
 
     @Test
     public void testError() throws Exception{
-        mockMvc.perform(get("/user/error/")).andDo(print()).andExpect(status().isOk())
+        mockMvc.perform(get("/user/error/")).andDo(print()).andExpect(status().is5xxServerError())
                 .andDo(document("error", responseFields(
                         fieldWithPath("message").description("message error."),
                         fieldWithPath("uuid").description("uuid for logging backend.")

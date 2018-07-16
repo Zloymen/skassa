@@ -1,0 +1,17 @@
+version: '2'
+services:
+    skassa-app:
+        image: test_ckassa/test-task:latest
+        #build: .
+        depends_on:
+            - skassa-postgresql
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://skassa-postgresql:5432/skassa
+            - SPRING_DATASOURCE_USERNAME=skassa
+            - SPRING_DATASOURCE_PASSWORD=skassa
+        ports:
+            - 8081:8080
+    skassa-postgresql:
+        extends:
+            file: postgresql.yml
+            service: skassa-postgresql

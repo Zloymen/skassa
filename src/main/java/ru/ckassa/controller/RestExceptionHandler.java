@@ -53,7 +53,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(TestTaskError.class)
     protected ResponseEntity<Object> handleCustomException(TestTaskError ex) {
-        return new ResponseEntity<>(new ErrorDto(MDC.get(logId),  ex.getErrorEnum().getTitle()), HttpStatus.OK);
+        return new ResponseEntity<>(new ErrorDto(MDC.get(logId),  ex.getErrorEnum().getTitle()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
